@@ -1,37 +1,16 @@
 <div class="container">
-    <div id="form-input-div" class="row">
-        <div class="col-xs-12">
-            <p> Add New Server!!</p>
-            <label for="serverNameID">Server Name :</label>
-            <input type="text" class="form-control" id="serverNameID" [(ngModel)] = "newServerName">
-
-            <label for="serverContentID" style="margin-top:15px;">Server Content :</label>
-            <input type="text" class="form-control" id="serverContentID" [(ngModel)] = "newServerContent">
-
-            <br>
-
-            <button 
-                 class="btn btn-primary" 
-                 (click)="addNewServer();">Add new Server</button>
-            <button class="btn btn-primary margin-15px" 
-                (click)="addNewBlueprint();">Add new Blueprint</button>
-        </div>
-    </div>
+    <app-cockpit 
+        (srvAdded) = "onServerAdded($event);"
+        (blueprintAdded) = "onBlueprintAdded($event)"
+    ></app-cockpit>
     <hr>
     
     <div id="output-panel-div" class="row"> 
         <div class="row" >
             <div class="col-xs-12">
-                 <div class="panel panel-default" *ngFor="let element of serverElements">
-                    <div class="panel-heading" >
-                            {{element.name}}
-                    </div>
-                    <div class="panel-body">
-                            <strong *ngIf="element.type === 'Server'" style="color: red">{{ element.content }}</strong>
-                             <em *ngIf="element.type === 'Blueprint'"  style="color: green">{{ element.content }}</em>
-                    </div>
-
-                </div> 
+                <app-server-element
+                 *ngFor="let serverElement of serverElements"
+                 [srvElement]="serverElement"></app-server-element>
             </div>
         </div>
     </div>

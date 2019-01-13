@@ -7,30 +7,29 @@ import { Component,OnInit } from '@angular/core';
 
 } )
 export class AppComponent {
-    serverElements:[{type:string,name:string , content:string}] = [{type:"server",name:"Amrit",content:"Pandey"}];
-    newServerName:string="";
-    newServerContent:string = "";
+    serverElements /*:[{type:string,name:string , content:string}] */= [];  /*[{type:"server",name:"Amrit",content:"Pandey"}];*/
+  
 
-    onInit(){
-        this.serverElements.push({type:"server",name:"Amrit",content:"Pandey"});
+    ngOnInit(){
+        //this.serverElements.push({type:"server",name:"Amrit",content:"Pandey"});
     }
 
-    addNewServer(){
+    onServerAdded(serverData:{name:string , content:string}){
         this.serverElements.push({
-            type:'Server',
-            name:this.newServerName,
-            content:this.newServerContent
+            type: 'Server',
+            name: serverData.name,
+            content: serverData.content
         });
-        
     }
+    
 
-    addNewBlueprint(){
+    onBlueprintAdded(blueprintData:{name:string , content:string}){
         this.serverElements.push({
-            type:'Blueprint',
-            name:this.newServerName,
-            content:this.newServerContent
+            type: 'Blueprint',
+            name: blueprintData.name,
+            content: blueprintData.content
         });
-        
     }
+    
     
 }

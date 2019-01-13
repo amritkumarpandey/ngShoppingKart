@@ -1,0 +1,16 @@
+p{
+    color: blue;
+}
+
+label{
+    margin: 10px;
+    color: brown
+}
+
+.float-right{
+    float: right;
+}
+
+.margin-15px{
+    margin: 15px;
+}
